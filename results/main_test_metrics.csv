@@ -1,0 +1,2 @@
+method,step,training_budget,global_psnr,foreground_psnr,global_ssim,foreground_ssim,global_mae,foreground_mae,nmse,hfen,gradient_mae,foreground_p95,foreground_p99
+mri_lgformer_t1,120000,140000,29.136169,28.136234,0.880736,0.861070,0.044018,0.053454,0.011475,0.239608,0.091928,0.159106,0.278512
