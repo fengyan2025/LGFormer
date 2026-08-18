@@ -17,7 +17,6 @@ The frozen internal repartition contains 1,071 subjects and 21,420 image pairs:
 | Validation | 107 | 2,140 |
 | Test | 107 | 2,140 |
 
-Splitting is subject-disjoint. Family IDs were unavailable, so the split is
-not proven family-disjoint. All subjects appeared somewhere in older project
+Splitting is subject-disjoint. All subjects appeared somewhere in older project
 exploration; the Test set is an internal fresh repartition rather than an
 untouched external cohort.

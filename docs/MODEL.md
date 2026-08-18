@@ -30,4 +30,4 @@ per-channel zero-initialized coefficient, and added to the input.
 LTAB uses pre-normalized transposed channel attention. A `1 x 1` QKV projection
 and depthwise `3 x 3` encoding precede L2 normalization of Q and K. Attention
 is computed as a per-head `C_head x C_head` matrix rather than a spatial
-`HW x HW` matrix. A Restormer-style GDFN completes the block.
+`HW x HW` matrix. 
