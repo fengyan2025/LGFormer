@@ -20,7 +20,6 @@
 - [Usage](#usage)
 - [Model Architecture](#model-architecture)
 - [Results](#results)
-- [Ablation Study](#ablation-study)
 - [Repository Structure](#repository-structure)
 - [License](#license)
 
@@ -60,13 +59,13 @@ pip install -e .
 pytest -q
 ```
 
-The frozen experiments used PyTorch 2.4.1 with CUDA acceleration. On Windows PowerShell, activate the virtual environment with `.\.venv\Scripts\Activate.ps1`.
+The frozen experiments used PyTorch 2.4.1 with CUDA acceleration.
 
 <a id="dataset-preparation"></a>
 
 ## 📂 Dataset Preparation
 
-This repository does **not** distribute HCP images, subject identifiers, split CSV files, or other restricted data. Obtain authorized T1w data from the official HCP data provider and comply with the applicable data-use terms.
+ Obtain authorized T1w data from the official HCP data provider and comply with the applicable data-use terms.
 
 Each paired normalized NPZ file must contain a two-dimensional array under the key `image`. Prepare the manifest and subject-disjoint splits with:
 
@@ -92,7 +91,7 @@ The main experiment used the following subject-level partition:
 
 ### Train from scratch
 
-Pretrained weights are not released. Train MRI-LGFormer-T1 from random initialization:
+Train MRI-LGFormer-T1 from random initialization:
 
 ```bash
 python scripts/train.py --config configs/train_t1_main.yaml
@@ -197,23 +196,6 @@ The step-120,000 model was selected on Validation and evaluated once on the froz
 Additional Test metrics include Global MAE `0.044018`, Foreground MAE `0.053454`, gradient MAE `0.091928`, Foreground P95 `0.159106`, and Foreground P99 `0.278512`. All 107 Test subjects improved over their corresponding 2.0-mm-quality input in subject-mean Global and Foreground PSNR and MAE.
 
 These values characterize performance on the frozen internal HCP-derived split. They do not establish superiority over every published method or external clinical generalization. See [`docs/RESULTS.md`](docs/RESULTS.md) and the aggregate files in [`results/`](results/) for the full report.
-
-<a id="ablation-study"></a>
-
-## 🧪 Ablation Study
-
-All ablations below were selected by the same mean Global-PSNR plateau rule.
-
-| Configuration | Selected Global PSNR | Δ vs. proposed |
-|---|---:|---:|
-| **Proposed stage-specialized model** | **29.1362** | — |
-| All-local allocation | 28.939208 | -0.071590 dB |
-| Reversed allocation | 28.957607 | -0.053191 dB |
-| Without directional filtering | 28.998137 | -0.012661 dB |
-| Without local-QKV encoding | 29.001516 | -0.009282 dB |
-| Without ReZero | 29.013210 | +0.002412 dB |
-
-The clearest evidence supports the proposed high-resolution-local/intermediate-mixed/low-resolution-global allocation over equal-budget all-local and reversed controls. Directional filtering showed a small positive effect. The isolated local-QKV and ReZero differences fall within approximately `0.01 dB`; they are therefore described as design and stability choices rather than independent performance breakthroughs.
 
 <a id="repository-structure"></a>
 
