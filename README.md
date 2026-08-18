@@ -220,4 +220,4 @@ docs/                 Data, model, training, and reproducibility notes
 
 Copyright © 2026 MRI-LGFormer-T1 authors. All rights reserved.
 
-The repository is publicly source-visible for academic inspection and reproducibility, but no permission to use, copy, modify, or redistribute the project is granted unless explicitly stated. See [`LICENSE`](LICENSE) and [`THIRD_PARTY_NOTICES.md`](THIRD_PARTY_NOTICES.md) for the complete terms and upstream acknowledgements.
+The repository is publicly source-visible for academic inspection and reproducibility, but no permission to use, copy, modify, or redistribute the project is granted unless explicitly stated. 
