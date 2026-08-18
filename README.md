@@ -29,7 +29,7 @@
 
 MRI-LGFormer-T1 is a deterministic image-to-image model for **same-grid T1w brain MRI enhancement**. It maps a normalized `1 × 304 × 256` 2.0-mm-quality input slice to a `1 × 304 × 256` estimate of the paired 0.7-mm-reference-quality image. The task improves image quality without enlarging the spatial matrix and should not be interpreted as conventional ×2 or ×4 super-resolution.
 
-The model follows a multi-scale encoder-decoder design inspired by Restormer, but reorganizes feature modeling according to spatial resolution. High-resolution stages use the proposed **MRI Local Detail Block (MLDB)**, the intermediate stage combines MLDB with a **Local-QKV Transposed Attention Block (LTAB)**, and low-resolution stages use LTAB for efficient global channel interaction. A residual head predicts a correction that is added to the input image. On the frozen 107-subject Test split, the Validation-selected step-120,000 checkpoint achieved `29.1362 dB` Global PSNR and `0.880736` Global SSIM.
+ High-resolution stages use the proposed **MRI Local Detail Block (MLDB)**, the intermediate stage combines MLDB with a **Local-QKV Transposed Attention Block (LTAB)**, and low-resolution stages use LTAB for efficient global channel interaction. A residual head predicts a correction that is added to the input image. On the frozen 107-subject Test split, the Validation-selected step-120,000 checkpoint achieved `29.1362 dB` Global PSNR and `0.880736` Global SSIM.
 
 <a id="highlights"></a>
 
