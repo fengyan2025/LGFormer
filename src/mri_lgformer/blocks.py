@@ -1,8 +1,5 @@
 """Building blocks for the standalone MRI-LGFormer-T1 implementation.
 
-The transposed-channel attention and gated depthwise feed-forward design are
-adapted from Restormer. MRI-LGFormer-T1 adds the MRI Local Detail Block (MLDB)
-and uses the blocks in a resolution-specialized stage allocation.
 """
 
 from __future__ import annotations
@@ -75,7 +72,6 @@ class LayerNorm(nn.Module):
 
 
 class GatedDconvFeedForward(nn.Module):
-    """Restormer-style gated depthwise-convolution feed-forward network."""
 
     def __init__(self, dim: int, expansion_factor: float, bias: bool) -> None:
         super().__init__()
