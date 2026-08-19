@@ -1,7 +1,0 @@
-variant,selected_step,global_psnr,delta_vs_proposed
-proposed,120000,29.010798,0.000000
-all_local_matched,115000,28.939208,-0.071590
-reversed_matched,115000,28.957607,-0.053191
-no_directional,120000,28.998137,-0.012661
-no_local_qkv,115000,29.001516,-0.009282
-no_rezero,115000,29.013210,0.002412
