@@ -7,14 +7,13 @@
 
 > 🧠 A deterministic Transformer framework for transforming 2.0-mm-quality T1-weighted brain MRI into a 0.7-mm-reference-quality estimate on the same spatial grid.
 
-![MRI-LGFormer-T1 architecture](figures/MRI_LGFormer_T1_architecture.png)
+![MRI-LGFormer-T1 architecture](figures/LGFormer.png)
 
 ---
 
 ## 📖 Table of Contents
 
 - [Abstract](#abstract)
-- [Highlights](#highlights)
 - [Installation](#installation)
 - [Dataset Preparation](#dataset-preparation)
 - [Usage](#usage)
@@ -27,19 +26,8 @@
 
 ## 🧠 Abstract
 
-MRI-LGFormer-T1 is a deterministic image-to-image model for **same-grid T1w brain MRI enhancement**. It maps a normalized `1 × 304 × 256` 2.0-mm-quality input slice to a `1 × 304 × 256` estimate of the paired 0.7-mm-reference-quality image. The task improves image quality without enlarging the spatial matrix and should not be interpreted as conventional ×2 or ×4 super-resolution.
+High-quality T1-weighted brain MRI is essential for accurately depicting fine anatomical structures, yet lower-quality acquisitions often suffer from blurred tissue boundaries and loss of structural details. Most existing restoration networks apply similar local or global feature modeling across different resolution stages, overlooking the substantial variation in feature characteristics along the network hierarchy. We propose LGFormer, a stage-specialized local--global Transformer for same-grid T1-weighted brain MRI enhancement. Our approach assigns local anatomical modeling to high-resolution stages and progressively introduces global channel interaction as the spatial resolution decreases, allowing the feature processing strategy to adapt to scale-dependent representation characteristics. To strengthen fine-detail recovery at high resolution, we develop an MRI Local Detail Block that combines isotropic local filtering with directional gating. At lower resolutions, a Local-QKV Transposed Attention Block incorporates local spatial encoding before channel-wise attention, enabling broader dependency modeling while retaining neighborhood information. Experiments on HCP-YA T1w data demonstrate that LGFormer consistently outperforms representative restoration methods, achieving 29.1362~dB PSNR and 0.880736 SSIM together with lower HFEN, MAE, and NMSE. Subject-level, qualitative, and ablation analyses further confirm that the proposed local-to-global stage allocation provides more accurate and structurally faithful brain MRI enhancement.
 
- High-resolution stages use the proposed **MRI Local Detail Block (MLDB)**, the intermediate stage combines MLDB with a **Local-QKV Transposed Attention Block (LTAB)**, and low-resolution stages use LTAB for efficient global channel interaction. A residual head predicts a correction that is added to the input image. On the frozen 107-subject Test split, the Validation-selected step-120,000 checkpoint achieved `29.1362 dB` Global PSNR and `0.880736` Global SSIM.
-
-<a id="highlights"></a>
-
-## ✨ Highlights
-
-- **Stage-specialized local-global modeling:** local anatomical detail is emphasized at high spatial resolution, while efficient global channel dependencies are modeled at lower resolutions.
-- **MRI Local Detail Block (MLDB):** an isotropic depthwise `3 × 3` branch is modulated by parallel depthwise `1 × 5` and `5 × 1` directional context.
-- **Local-QKV Transposed Attention Block (LTAB):** local depthwise QKV encoding precedes transposed channel attention and a gated depthwise-convolution feed-forward network.
-- **Same-grid residual enhancement:** the model predicts an image correction rather than increasing the input matrix size.
-- **Reproducible selection protocol:** checkpoints are selected using mean Global PSNR on Validation, with the earliest point chosen within a pre-specified `0.01 dB` plateau.
 
 <a id="installation"></a>
 
