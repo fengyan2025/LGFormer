@@ -174,15 +174,13 @@ LTAB uses a `1 × 1` QKV projection followed by depthwise `3 × 3` local QKV enc
 
 ## 📊 Results
 
-The step-120,000 model was selected on Validation and evaluated once on the frozen 107-subject Test split.
+LGFormer was trained with three random seeds (`20260730`, `20261117`, and `20261118`) and evaluated on the same HCP Test split of 107 subjects and 2,140 slices. All runs completed 140,000 iterations, with Validation-selected checkpoints at 120k, 125k, and 125k, respectively.
 
-| Global PSNR ↑ | Foreground PSNR ↑ | Global SSIM ↑ | Foreground SSIM ↑ | NMSE ↓ | HFEN ↓ |
-|---:|---:|---:|---:|---:|---:|
-| **29.1362** | **28.1362** | **0.880736** | **0.861070** | **0.011475** | **0.239608** |
+| PSNR (dB) ↑ | SSIM ↑ | HFEN ↓ | MAE ↓ | NMSE ↓ |
+|---:|---:|---:|---:|---:|
+| **29.137858 ± 0.001571** | **0.880809 ± 0.000089** | **0.239581 ± 0.000024** | **0.044002 ± 0.000026** | **0.011470 ± 0.000005** |
 
-Additional Test metrics include Global MAE `0.044018`, Foreground MAE `0.053454`, gradient MAE `0.091928`, Foreground P95 `0.159106`, and Foreground P99 `0.278512`. All 107 Test subjects improved over their corresponding 2.0-mm-quality input in subject-mean Global and Foreground PSNR and MAE.
-
-These values characterize performance on the frozen internal HCP-derived split. They do not establish superiority over every published method or external clinical generalization. See [`docs/RESULTS.md`](docs/RESULTS.md) and the aggregate files in [`results/`](results/) for the full report.
+Values are mean ± sample standard deviation across the three training runs.
 
 <a id="repository-structure"></a>
 
