@@ -1,4 +1,4 @@
-# LGFormer: Stage-Specialized Local-to-Global Representation Learning for T1-Weighted Brain MRI Enhancement
+# LGFormer: Stage-Specialized Local-to-Global Modeling for High-Fidelity T1-Weighted Brain MRI Enhancement
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.4%2B-ee4c2c.svg)](https://pytorch.org/)
