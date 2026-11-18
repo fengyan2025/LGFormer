@@ -89,7 +89,6 @@ Frozen main-run settings:
 
 | Setting | Value |
 |---|---:|
-| Seed | 20260730 |
 | Maximum steps | 140,000 |
 | Batch size | 2 |
 | Crop size | 256 × 256 |
